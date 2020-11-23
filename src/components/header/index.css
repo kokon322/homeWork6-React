@@ -1,0 +1,10 @@
+header {
+    background: lightcoral;
+    color: white;
+    font-weight: bold;
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 14px;
+}
