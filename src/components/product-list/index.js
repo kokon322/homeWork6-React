@@ -6,12 +6,12 @@ import {ProductItem} from "../product-item";
 
 export const ProductList = () => {
     const dispatch = useDispatch();
-    const products = useSelector(({products}) => products)
+    const products = useSelector(({products}) => products);
+    const card = useSelector(({card}) => card);
 
     const fetchProducts = async () => {
         const response = await fetch("https://fakestoreapi.com/products");
         const data = await response.json();
-
         dispatch(onProductsLoaded(data));
     }
 
@@ -23,9 +23,10 @@ export const ProductList = () => {
     return (
         <div>
             {
-                products && (
+                products && products.length && (
                     products.map(product =>
-                        <ProductItem key={product.id} productData={product}/>)
+                        <ProductItem key={product.id} isAddedToCard={!!card.find(el => el.id === product.id)}
+                                     productData={product}/>)
                 )
             }
 
